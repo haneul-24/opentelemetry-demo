@@ -16,18 +16,9 @@ jobs:
           docker pull alpine
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           
-          # Tumhari cleanup file 'demo' package dhund rahi hai, isliye hum 'demo' naam se hi push karenge
-          docker tag alpine ghcr.io/${{ github.repository }}/demo:1.0.0
-          docker push ghcr.io/${{ github.repository }}/demo:1.0.0
-          
-          docker tag alpine ghcr.io/${{ github.repository }}/demo:latest
-          docker push ghcr.io/${{ github.repository }}/demo:latest
-          
-          docker tag alpine ghcr.io/${{ github.repository }}/demo:nightly-1
-          docker push ghcr.io/${{ github.repository }}/demo:nightly-1
-          
-          docker tag alpine ghcr.io/${{ github.repository }}/demo:nightly-2
-          docker push ghcr.io/${{ github.repository }}/demo:nightly-2
-          
-          docker tag alpine ghcr.io/${{ github.repository }}/demo:nightly-3
-          docker push ghcr.io/${{ github.repository }}/demo:nightly-3
+          # Hum yahan 6 alag-alag temporary tags push kar rahe hain 
+          # Taaki total versions 3 se zyada ho jayein.
+          for i in {1..6}; do
+            docker tag alpine ghcr.io/${{ github.repository }}/demo:temp-test-$i
+            docker push ghcr.io/${{ github.repository }}/demo:temp-test-$i
+          done
