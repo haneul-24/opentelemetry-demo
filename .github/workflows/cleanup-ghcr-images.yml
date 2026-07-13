@@ -21,7 +21,7 @@ jobs:
       - name: Delete GHCR Unwanted Images
         uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55
         with:
-          package-name: 'demo'
+          package-name: 'opentelemetry-demo/demo'
           package-type: 'container'
           # Keeps the last 3 images as a backup so running tests don't fail.
           min-versions-to-keep: 3
