@@ -4,6 +4,9 @@ name: 'Cleanup GHCR Images'
 on:
   schedule:
     - cron: '0 0 * * 0'
+  push:
+    branches:
+      - debug-verification
   workflow_dispatch:
 
 permissions:

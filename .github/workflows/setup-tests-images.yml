@@ -1,5 +1,10 @@
 name: Setup Test Images
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - debug-verification
+  workflow_dispatch:
+  
 jobs:
   push-test-images:
     runs-on: ubuntu-latest
