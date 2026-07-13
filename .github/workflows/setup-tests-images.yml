@@ -1,0 +1,27 @@
+name: Setup Test Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push-test-images:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Push Dummy Images
+        run: |
+          docker pull alpine
+          # Tag images with your fork's path
+          docker tag alpine ghcr.io/${{ github.repository }}/demo:nightly-1
+          docker tag alpine ghcr.io/${{ github.repository }}/demo:nightly-2
+          docker tag alpine ghcr.io/${{ github.repository }}/demo:1.0.0
+          docker tag alpine ghcr.io/${{ github.repository }}/demo:latest
+          
+          # Login and Push
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/${{ github.repository }}/demo:nightly-1
+          docker push ghcr.io/${{ github.repository }}/demo:nightly-2
+          docker push ghcr.io/${{ github.repository }}/demo:1.0.0
+          docker push ghcr.io/${{ github.repository }}/demo:latest
