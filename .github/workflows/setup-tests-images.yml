@@ -4,7 +4,7 @@ on:
     branches:
       - debug-verification
   workflow_dispatch:
-  
+
 jobs:
   push-test-images:
     runs-on: ubuntu-latest
@@ -16,9 +16,15 @@ jobs:
           docker pull alpine
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           
-          # Hum yahan 6 alag-alag temporary tags push kar rahe hain 
-          # Taaki total versions 3 se zyada ho jayein.
-          for i in {1..6}; do
+          # 1. Stable Tags (Ye ignore-versions se safe rahenge)
+          for tag in "latest" "1.0.0" "1.0.1"; do
+            docker tag alpine ghcr.io/${{ github.repository }}/demo:$tag
+            docker push ghcr.io/${{ github.repository }}/demo:$tag
+          done
+
+          # 2. Temporary Tags (Inhe tumhara cleanup script delete karega)
+          # Isse total version count 3 se upar jayega aur cleanup trigger hoga
+          for i in {1..5}; do
             docker tag alpine ghcr.io/${{ github.repository }}/demo:temp-test-$i
             docker push ghcr.io/${{ github.repository }}/demo:temp-test-$i
           done
