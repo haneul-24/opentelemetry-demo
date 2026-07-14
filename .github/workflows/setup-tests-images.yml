@@ -1,8 +1,8 @@
 name: Setup Test Images
 on:
   push:
-    # branches:
-    #   - debug-verification
+    branches:
+      - debug-verification
   workflow_dispatch:
 
 jobs:
