@@ -20,21 +20,21 @@ jobs:
           docker pull alpine:latest
 
           # 3 Tags jo SAVE honge (Regex match karenge)
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:1.1.0
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:1.1.0
+          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.0
+          docker push ghcr.io/haneul-24/demo:1.1.0
 
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:1.1.1
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:1.1.1
+          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.1
+          docker push ghcr.io/haneul-24/demo:1.1.1
 
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:latest
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:latest
+          docker tag alpine:latest ghcr.io/haneul-24/demo:latest
+          docker push ghcr.io/haneul-24/demo:latest
 
           # 3 Tags jo DELETE honge (Regex match nahi karenge)
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:nightly-a
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:nightly-a
+          docker tag alpine:latest ghcr.io/haneul-24/demo:nightly-a
+          docker push ghcr.io/haneul-24/demo:nightly-a
 
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:nightly-b
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:nightly-b
+          docker tag alpine:latest ghcr.io/haneul-24/demo:nightly-b
+          docker push ghcr.io/haneul-24/demo:nightly-b
 
-          docker tag alpine:latest ghcr.io/haneul-24/opentelemetry-demo/demo:temp-test
-          docker push ghcr.io/haneul-24/opentelemetry-demo/demo:temp-test
+          docker tag alpine:latest ghcr.io/haneul-24/demo:temp-test
+          docker push ghcr.io/haneul-24/demo:temp-test
