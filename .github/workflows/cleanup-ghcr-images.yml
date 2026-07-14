@@ -24,10 +24,8 @@ jobs:
           package-name: 'demo'
           package-type: 'container'
           # Keeps the last 3 images as a backup so running tests don't fail.
-          
+          min-versions-to-keep: 3
           # Strict SemVer anchor. Keeps pure versions (like 1.12.0) and wipes nightly/ephemeral tags.
           
           ignore-versions: '^(latest|[0-9]+\.[0-9]+\.[0-9]+)$'
-
-          min-versions-to-keep: 3
-        
+          dry-run: true
