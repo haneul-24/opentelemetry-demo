@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [nightly-a, nightly-b, 1.1.1, 2.12.4, temp-test, 1.2.2]
+        version: [3.12.2, nightly-a, nightly-b, 1.1.1, 2.12.4, temp-test, 1.2.2]
     permissions:
       packages: write
     steps:
