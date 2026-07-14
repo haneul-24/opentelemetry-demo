@@ -20,12 +20,7 @@ jobs:
           docker pull alpine:latest
 
           # 3 Tags jo SAVE honge (Regex match karenge)
-          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.0
-          docker push ghcr.io/haneul-24/demo:1.1.0
-
-          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.1
-          docker push ghcr.io/haneul-24/demo:1.1.1
-
+          
           docker tag alpine:latest ghcr.io/haneul-24/demo:latest
           docker push ghcr.io/haneul-24/demo:latest
 
@@ -38,3 +33,9 @@ jobs:
 
           docker tag alpine:latest ghcr.io/haneul-24/demo:temp-test
           docker push ghcr.io/haneul-24/demo:temp-test
+
+          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.0
+          docker push ghcr.io/haneul-24/demo:1.1.0
+
+          docker tag alpine:latest ghcr.io/haneul-24/demo:1.1.1
+          docker push ghcr.io/haneul-24/demo:1.1.1
