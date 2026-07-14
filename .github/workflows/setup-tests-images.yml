@@ -19,7 +19,10 @@ jobs:
           # docker pull alpine
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           
-          docker build --build-arg ID=${{ matrix.version }} -t ghcr.io/haneul-24/demo:${{ matrix.version }} .
+          docker pull alpine:latest
+          
+          # Har matrix run ke liye unique tag do
+          docker tag alpine:latest ghcr.io/haneul-24/demo:${{ matrix.version }}
           docker push ghcr.io/haneul-24/demo:${{ matrix.version }}
 
           # # 1. Latest release (Keep)
