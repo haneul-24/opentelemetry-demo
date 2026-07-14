@@ -19,10 +19,16 @@ jobs:
           # docker pull alpine
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           
-          docker pull alpine:latest
+          # Yahan magic: Hum ek dummy file bana rahe hain jo har matrix run mein alag hogi
+          echo "${{ matrix.version }}-${{ github.run_id }}" > dummy.txt
           
-          # Har matrix run ke liye unique tag do
-          docker tag alpine:latest ghcr.io/haneul-24/demo:${{ matrix.version }}
+          # Ab hum alpine se ek nayi image "commit" kar rahe hain
+          # Hum ek temporary container banayenge aur usme apni dummy file daal denge
+          container_id=$(docker create alpine:latest)
+          docker cp dummy.txt $container_id:/dummy.txt
+          docker commit $container_id ghcr.io/haneul-24/demo:${{ matrix.version }}
+          
+          # Ab push karo
           docker push ghcr.io/haneul-24/demo:${{ matrix.version }}
 
           # # 1. Latest release (Keep)
